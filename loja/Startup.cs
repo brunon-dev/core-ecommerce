@@ -34,7 +34,7 @@ namespace loja
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Pedido/Error");
             }
 
             app.UseStaticFiles();
@@ -43,7 +43,7 @@ namespace loja
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Pedido}/{action=Carrossel}/{id?}");
             });
         }
     }
