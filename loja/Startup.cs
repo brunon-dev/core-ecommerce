@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
 
 namespace loja
 {
@@ -22,10 +23,17 @@ namespace loja
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            string connectionString = Configuration.GetConnectionString("Default");
+
+            services.AddDbContext<ApplicationContext>(options =>
+                options.UseSqlServer(connectionString)
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env,
+            IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -45,6 +53,12 @@ namespace loja
                     name: "default",
                     template: "{controller=Pedido}/{action=Carrossel}/{id?}");
             });
+
+            // garante que o banco de dados está criado
+            serviceProvider
+                .GetService<ApplicationContext>()
+                .Database
+                .Migrate();
         }
     }
 }
