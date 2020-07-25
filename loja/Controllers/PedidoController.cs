@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using loja.Models;
 using System.Diagnostics;
 using loja.Repositories;
+using loja.Interfaces;
 
 namespace loja.Controllers
 {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using loja.Models;
 
-namespace loja.Repositories
+namespace loja.Interfaces
 {
     public interface IProdutoRepository
     {

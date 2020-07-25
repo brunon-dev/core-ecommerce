@@ -1,4 +1,5 @@
-﻿using loja.Models;
+﻿using loja.Interfaces;
+using loja.Models;
 using loja.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
