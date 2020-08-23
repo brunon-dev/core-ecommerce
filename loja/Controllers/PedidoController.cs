@@ -44,7 +44,8 @@ namespace loja.Controllers
 
         public IActionResult Resumo()
         {
-            return View();
+            var pedido = _pedidoRepository.GetPedido();
+            return View(pedido);
         }
 
         public IActionResult Error()
